@@ -1,0 +1,23 @@
+//plugins {
+//    id 'java'
+//}
+
+group 'com.sample.gradle'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'java'
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        /*maven {
+            url : ''
+        }*/
+
+        // If we want dependencies to be fetched from file directory. Means dependencies are searched from libA & libB.
+        /* flatDir{
+             dir 'libA', 'libB'
+         } */
+    }
+
+}

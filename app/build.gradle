@@ -1,0 +1,35 @@
+
+
+group 'com.sample.gradle'
+version '1.0-SNAPSHOT'
+
+//plugin required to create binary distribution
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+
+dependencies {
+    // Two different ways to declare dependencies for test and compile configuration
+    compile 'log4j:log4j:1.2.17'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// This is required to define main class in jar. Required only in case we are running jar directly using command.
+jar{
+    manifest{
+        attributes 'Main-Class' : "com.gradle.learn.TestClass"
+    }
+}
+
+// We also need to define the main class for binary distribution
+mainClassName = 'com.gradle.learn.MainWriter'
+
+
+dependencies {
+    // Two different ways to declare dependencies for test and compile configuration
+    compile 'log4j:log4j:1.2.17'
+    // used for module dependencies
+    compile project(':core')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
